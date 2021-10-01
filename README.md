@@ -27,6 +27,7 @@ Here's a more stylish version of [Bash-Oneliner](https://onceupon.github.io/Bash
 - [Hardware](#hardware)
 - [Networking](#networking)
 - [Data Wrangling](#data-wrangling)
+- [CUPS printing](#cups-printing)
 - [Others](#others)
 
 ## Terminal Tricks
@@ -2883,6 +2884,30 @@ tac filename
 while read a b; do yes $b |head -n $a ;done <test.txt
 ```
 
+## CUPS printing
+[[back to top](#handy-bash-one-liners)]
+
+##### Printer Status and Control
+```bash
+lpstat -t
+
+#before Debian 11
+lpstat -l -e
+```
+
+##### Stopping and starting print queues. Acceptance and rejection of jobs sent to a destination:
+```bash
+cupsdisable <print_queue_name> 
+cupsenable <print_queue_name>
+cupsaccept <print_queue_name>
+cupsreject <print_queue_name>
+```
+
+##### Cancel all jobs on a destination and additionally delete job data files:
+```bash
+cancel -a <print_queue_name>
+cancel -a -x <print_queue_name>
+```
 
 ## Others
 [[back to top](#handy-bash-one-liners)]
